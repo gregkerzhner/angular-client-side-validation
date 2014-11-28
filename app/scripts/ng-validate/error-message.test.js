@@ -12,19 +12,22 @@ describe('error-message', function(){
         '<label class="control-label">Password</label>'+
         '<input id="foo" type="password" class="input input-lg form-control" ng-model="credentials.password" name="password" required>'+
         '<p error-message error-type="required">Password is required</p>'+
+        '<p error-message error-type="snack">Password is required</p>'+
       '</div></form>')(formScope);
 
     errorMessageRequiredScope = angular.element(element.find('p')[0]).scope();
+     errorMessageSnacksScope = angular.element(element.find('p')[1]).scope();
     ngValidateScope = angular.element(element.find('div')[0]).scope();
   }));
 
   it('does not show error messages at first', function(){
     expect(errorMessageRequiredScope.show()).toBe(false)
+    expect(errorMessageSnacksScope.show()).toBe(false)
   })
 
   it('shows error messages', function(){
-    ngValidateScope.form['password'].$error['required'] = true;
+    ngValidateScope.form['password'].$error['snack'] = true;
     ngValidateScope.touched = ngValidateScope.typed = true;
-    expect(errorMessageRequiredScope.show()).toBe(true) 
+    expect(errorMessageSnacksScope.show()).toBe(true) 
   })
 })
