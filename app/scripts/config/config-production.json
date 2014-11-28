@@ -1,0 +1,6 @@
+{
+  "name": "angular-client-side-validation.config",
+  "constants": { 
+    "ENV": {}
+  }
+}
