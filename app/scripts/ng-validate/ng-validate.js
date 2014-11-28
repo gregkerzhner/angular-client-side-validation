@@ -9,6 +9,7 @@ angular.module('angular-client-side-validation.ng-validate', [
     scope: true,
     template: '<div ng-class="{true: errorClass, false: \'\'}[hasError()]"> <ng-transclude/></div>', 
     link: function(scope, el, attrs, formCtrl, transclude){
+      debugger
       scope.form = formCtrl;
       var inputEl = el[0].querySelector('[name]');
 

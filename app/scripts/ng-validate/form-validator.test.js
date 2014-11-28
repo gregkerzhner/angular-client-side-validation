@@ -20,13 +20,13 @@ describe('form-validator', function(){
 
   it("broadcasts event if scope is invalid", function(){
     var child = scope.$new();
-    scope.form = {$invalid: true}
+    scope.baz = {$invalid: true}
     var intercepted;
     child.$on('show-error-messages', function(){
       intercepted = true;
     })
 
-    fv.validate(scope);
+    fv.validate(scope, 'baz');
     expect(intercepted).toBe(true)
   })
 })

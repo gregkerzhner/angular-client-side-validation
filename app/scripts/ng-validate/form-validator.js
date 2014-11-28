@@ -15,8 +15,8 @@ angular.module('angular-client-side-validation.form-validator', [
         return errorClass || 'field-error';
       },
 
-      validate: function($scope){
-        if($scope.form.$invalid){
+      validate: function($scope, formName){
+        if($scope[formName].$invalid){
           $scope.$broadcast('show-error-messages');
         }
         return true;  
