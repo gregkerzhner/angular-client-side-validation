@@ -11,12 +11,15 @@ angular.module('angular-client-side-validation.form-validator', [
 
   this.$get = function($q){
     return {
+      errorClass: function(){
+        return errorClass || 'field-error';
+      },
+
       validate: function($scope){
-        $scope.$parent.$broadcast('show-errors-check-validity');
-        if(formCtrl.$invalid){
-          return false;
+        if($scope.form.$invalid){
+          $scope.$broadcast('show-error-messages');
         }
-        return true; 
+        return true;  
       }
     }
   }

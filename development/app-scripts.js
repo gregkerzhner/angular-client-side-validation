@@ -59,12 +59,15 @@ angular.module('angular-client-side-validation.form-validator', [
 
   this.$get = function($q){
     return {
+      errorClass: function(){
+        return errorClass || 'field-error';
+      },
+
       validate: function($scope){
-        $scope.$parent.$broadcast('show-errors-check-validity');
-        if(formCtrl.$invalid){
-          return false;
+        if($scope.form.$invalid){
+          $scope.$broadcast('show-error-messages');
         }
-        return true; 
+        return true;  
       }
     }
   }
@@ -79,7 +82,7 @@ angular.module('angular-client-side-validation.ng-validate', [
     require: '^form',
     transclude: true,
     scope: true,
-    template: '<div ng-class="{\'field-error\': hasError()}"> <ng-transclude/></div>', 
+    template: '<div ng-class="{true: errorClass, false: \'\'}[hasError()]"> <ng-transclude/></div>', 
     link: function(scope, el, attrs, formCtrl, transclude){
       scope.touched = false;
       scope.typed = false;
@@ -104,8 +107,15 @@ angular.module('angular-client-side-validation.ng-validate', [
       });
     },
 
-    controller: function($scope, $element, $attrs){
+    controller: function($scope, $element, $attrs, formValidator){
+      $scope.errorClass = formValidator.errorClass();
+
+      $scope.$on('show-error-messages', function(){
+        $scope.touched = $scope.typed = true;
+      });
+
       $scope.hasError = function(){
+
         return $scope.touched && $scope.typed && $scope.form[$scope.inputName].$invalid;
       }
 
