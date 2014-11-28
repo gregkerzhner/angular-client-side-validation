@@ -99,7 +99,8 @@ gulp.task('build-js', function(){
 });
 
 gulp.task('build-unconcat-js', function(){
-  return gulp.src([ 'development/vendor-scripts.js', 'development/templates.js', 'development/app-scripts.js' ])
+  return gulp.src(['development/app-scripts.js', 'development/templates.js' ])
+    .pipe(concat('angular-client-side-validation.js'))
     .pipe(gulp.dest('build'));
 });
 
