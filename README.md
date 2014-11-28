@@ -57,5 +57,5 @@ To run tests
 gulp unit-test
 ```
 
-###LiSCENCE
+###Liscence
 MIT
