@@ -9,6 +9,16 @@ $ bower install angular-client-side-validation
 ```
 
 ### Usage
+Include the angular-client-side-validation-module
+
+```
+angular.module('your-app', [    
+  'angular-client-side-validation'
+])
+```
+
+Use the directive as follows:
+
 ```
 <div class="form-group" ng-validate>
   <label class="control-label">Email</label>
