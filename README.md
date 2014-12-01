@@ -4,11 +4,11 @@ Unintrusive, awesome form messaging for your Angular.js application.
 [Demo](http://plnkr.co/edit/qeRAiDuyKpaM7l6RjxmV?p=preview) 
 
 ### Installation
-1. Get the module
+Get the module
 ```
 $ bower install angular-client-side-validation
 ```
-2. Include the relevant script
+Include the relevant script
 
 
 ```
